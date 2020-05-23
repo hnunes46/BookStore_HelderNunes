@@ -51,28 +51,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E9CA8D42478487100DD4CE9 /* Views */ = {
+		6E55E8B424792BAD005771E8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6E55E8B524792BD2005771E8 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				6E9CA8D92478496500DD4CE9 /* BooksVC.swift */,
+				6E9CA8DB2478497700DD4CE9 /* FavoritesVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		6E55E8B724792C3D005771E8 /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
 				6E9CA8D5247848F100DD4CE9 /* BSTabBarController.swift */,
 			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		6E9CA8D42478487100DD4CE9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6E55E8B724792C3D005771E8 /* TabBarControllers */,
+				6E55E8B424792BAD005771E8 /* ViewControllers */,
+			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		6E9CA8D72478492F00DD4CE9 /* Books */ = {
-			isa = PBXGroup;
-			children = (
-				6E9CA8D92478496500DD4CE9 /* BooksVC.swift */,
-			);
-			path = Books;
-			sourceTree = "<group>";
-		};
-		6E9CA8D82478493C00DD4CE9 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				6E9CA8DB2478497700DD4CE9 /* FavoritesVC.swift */,
-			);
-			path = Favorites;
 			sourceTree = "<group>";
 		};
 		6E9CA8E0247850AF00DD4CE9 /* Model */ = {
@@ -135,12 +144,11 @@
 		6EC1FF642478443E008B0697 /* BookStore_HelderNunes */ = {
 			isa = PBXGroup;
 			children = (
+				6E55E8B524792BD2005771E8 /* Screens */,
 				6E9CA8EA2478583B00DD4CE9 /* Services */,
 				6E9CA8E92478582500DD4CE9 /* Repositories */,
 				6E9CA8E3247852F100DD4CE9 /* Utilities */,
 				6E9CA8E0247850AF00DD4CE9 /* Model */,
-				6E9CA8D72478492F00DD4CE9 /* Books */,
-				6E9CA8D82478493C00DD4CE9 /* Favorites */,
 				6E9CA8D42478487100DD4CE9 /* Views */,
 				6EC1FF7C24784516008B0697 /* Support */,
 				6EC1FF7624784442008B0697 /* Info.plist */,
