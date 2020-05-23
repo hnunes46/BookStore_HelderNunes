@@ -13,6 +13,7 @@ class BookDetailVC: UIViewController {
     let coverImageView      = BSImageView(frame: .zero)
     let titleLabel          = UILabel()
     let authorsLabel        = UILabel()
+    let addFavoriteButton   = UIButton()
     let descriptionTextView = UITextView()
     let buyButton           = BSButton()
     
@@ -31,6 +32,7 @@ class BookDetailVC: UIViewController {
         configureCoverImageView()
         configureTitleLabel()
         configureAuthorsLabel()
+        configuraAddFavoriteButton()
         configureBuyButton()
         configureDescriptionTextView()
     }
@@ -46,7 +48,7 @@ class BookDetailVC: UIViewController {
             coverImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             coverImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             coverImageView.widthAnchor.constraint(equalToConstant: 120),
-            coverImageView.heightAnchor.constraint(equalToConstant: 170),
+            coverImageView.heightAnchor.constraint(equalToConstant: 180),
         ])
 
     }
@@ -89,7 +91,22 @@ class BookDetailVC: UIViewController {
             authorsLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             authorsLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: 8),
             authorsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            authorsLabel.heightAnchor.constraint(equalToConstant: 80)
+            authorsLabel.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    private func configuraAddFavoriteButton() {
+        view.addSubview(addFavoriteButton)
+        
+        addFavoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        addFavoriteButton.setTitle("Add Favorite", for: .normal)
+        addFavoriteButton.setTitleColor(.systemBlue, for: .normal)
+        
+        NSLayoutConstraint.activate([
+            addFavoriteButton.topAnchor.constraint(equalTo: authorsLabel.bottomAnchor, constant: 0),
+            addFavoriteButton.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: 8),
+            addFavoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            addFavoriteButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -140,6 +157,10 @@ class BookDetailVC: UIViewController {
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
         }
+    }
+    
+    
+    @objc private func addFavoriteButtonTapped() {
         
     }
 
