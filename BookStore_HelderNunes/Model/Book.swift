@@ -14,7 +14,7 @@ struct BookStoreResponse: Codable {
     var items: [Book]?
 }
 
-struct Book: Codable {
+struct Book: Codable, Equatable {
     var id: String
     var volumeInfo: VolumeInfo
     var saleInfo: SaleInfo
@@ -22,7 +22,7 @@ struct Book: Codable {
 }
 
 
-struct VolumeInfo: Codable {
+struct VolumeInfo: Codable, Equatable {
     var title: String
     var authors: [String]?
     var description: String?
@@ -30,11 +30,11 @@ struct VolumeInfo: Codable {
 }
 
 
-struct SaleInfo: Codable {
+struct SaleInfo: Codable, Equatable {
     var buyLink: String?
 }
 
 
-struct ImageLinks: Codable {
+struct ImageLinks: Codable, Equatable {
     var thumbnail: String
 }

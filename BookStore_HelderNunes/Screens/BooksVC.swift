@@ -48,7 +48,12 @@ class BooksVC: UIViewController {
             case .success(let books):
                 self.updateUI(with: books)
             case .failure(let error):
-                print(error.localizedDescription)
+                let alert = UIAlertController(title: "Something went wrong", message: error.rawValue, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
