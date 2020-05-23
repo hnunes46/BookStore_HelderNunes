@@ -21,6 +21,9 @@ class BooksVC: UIViewController {
     }
     
     
+    //MARK: UI
+    
+    
     private func configureViewController() {
         view.backgroundColor = .systemBackground
         
@@ -37,6 +40,9 @@ class BooksVC: UIViewController {
         booksCollectionView.backgroundColor = .systemBackground
         booksCollectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.reuseId)
     }
+    
+    
+    //MARK: Network
     
     
     func getBooks(page: Int) {
@@ -105,6 +111,4 @@ extension BooksVC: UICollectionViewDataSource {
         cell.set(book: book)
         return cell
     }
-    
-    
 }
