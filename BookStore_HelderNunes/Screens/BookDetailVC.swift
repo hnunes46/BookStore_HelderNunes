@@ -27,6 +27,15 @@ class BookDetailVC: UIViewController {
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        checkFavoriteBook()
+    }
+    
+    
+    //MARK: UI
+    
+    
     private func configureViewController() {
         view.backgroundColor = .systemBackground
         
@@ -105,27 +114,6 @@ class BookDetailVC: UIViewController {
     private func configuraAddFavoriteButton() {
         view.addSubview(favoriteButton)
         
-        PersistenceManager.checkFavorite(bookId: book.id) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let isFavorite):
-                if isFavorite {
-                    self.favoriteButton.setTitle("Remove Favorite", for: .normal)
-                    self.actionType = .remove
-                } else {
-                    self.favoriteButton.setTitle("Add Favorite", for: .normal)
-                    self.actionType = .add
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Something went wrong", message: error.rawValue, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-        }
-        
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         favoriteButton.setTitleColor(.systemBlue, for: .normal)
         favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
@@ -172,6 +160,30 @@ class BookDetailVC: UIViewController {
             descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             descriptionTextView.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -16)
         ])
+    }
+    
+    
+    private func checkFavoriteBook() {
+        PersistenceManager.checkFavorite(bookId: book.id) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let isFavorite):
+                if isFavorite {
+                    self.favoriteButton.setTitle("Remove Favorite", for: .normal)
+                    self.actionType = .remove
+                } else {
+                    self.favoriteButton.setTitle("Add Favorite", for: .normal)
+                    self.actionType = .add
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Something went wrong", message: error.rawValue, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     
