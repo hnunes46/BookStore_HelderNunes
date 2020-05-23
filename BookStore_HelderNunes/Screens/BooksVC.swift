@@ -80,7 +80,7 @@ extension BooksVC: UICollectionViewDelegate {
         let height          = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
-            page += 1
+            page += 20
             getBooks(page: page)
         }
     }
