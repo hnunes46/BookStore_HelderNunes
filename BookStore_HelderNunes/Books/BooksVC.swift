@@ -14,17 +14,14 @@ class BooksVC: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .green
+        
+        let repository = BookStoreRepository()
+        
+        repository.getBooks(page: 0, success: { (books) in
+            print(books)
+        }) { (error) in
+            print(error)
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
