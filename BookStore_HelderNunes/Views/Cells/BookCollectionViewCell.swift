@@ -26,7 +26,12 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     
     func set(book: Book) {
-        bookImageView.downloadImage(fromURL: book.volumeInfo.imageLinks.thumbnail)
+        if let imagelinks = book.volumeInfo.imageLinks {
+            bookImageView.downloadImage(fromURL: imagelinks.thumbnail)
+        } else {
+            bookImageView.image = UIImage(named: "default-cover")
+        }
+        
     }
     
     

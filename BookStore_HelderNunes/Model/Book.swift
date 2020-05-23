@@ -26,7 +26,7 @@ struct VolumeInfo: Codable, Equatable {
     var title: String
     var authors: [String]?
     var description: String?
-    var imageLinks: ImageLinks
+    var imageLinks: ImageLinks?
 }
 
 

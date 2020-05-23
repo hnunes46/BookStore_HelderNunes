@@ -43,7 +43,13 @@ class BookDetailVC: UIViewController {
         view.addSubview(coverImageView)
         
         coverImageView.translatesAutoresizingMaskIntoConstraints = false
-        coverImageView.downloadImage(fromURL: book.volumeInfo.imageLinks.thumbnail)
+        
+        if let imageLinks = book.volumeInfo.imageLinks {
+            coverImageView.downloadImage(fromURL: imageLinks.thumbnail)
+        } else {
+            coverImageView.image = UIImage(named: "default-cover")
+        }
+        
         
         NSLayoutConstraint.activate([
             coverImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
