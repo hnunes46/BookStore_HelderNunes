@@ -13,7 +13,6 @@ class BSTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UITabBar.appearance().tintColor = .systemPink
         viewControllers = [createBooksNC(), createFavoritesNC()]
     }
     

@@ -12,6 +12,7 @@
 		6E55E8C1247935FE005771E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55E8C0247935FE005771E8 /* NetworkManager.swift */; };
 		6E55E8C324793790005771E8 /* BSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55E8C224793790005771E8 /* BSError.swift */; };
 		6E55E8C624793C16005771E8 /* BSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55E8C524793C16005771E8 /* BSImageView.swift */; };
+		6E8E6DF324796472002DAC75 /* BSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8E6DF224796472002DAC75 /* BSButton.swift */; };
 		6E9CA8D6247848F100DD4CE9 /* BSTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CA8D5247848F100DD4CE9 /* BSTabBarController.swift */; };
 		6E9CA8DA2478496500DD4CE9 /* BooksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CA8D92478496500DD4CE9 /* BooksVC.swift */; };
 		6E9CA8DC2478497700DD4CE9 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CA8DB2478497700DD4CE9 /* FavoritesVC.swift */; };
@@ -29,6 +30,7 @@
 		6E55E8C0247935FE005771E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		6E55E8C224793790005771E8 /* BSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSError.swift; sourceTree = "<group>"; };
 		6E55E8C524793C16005771E8 /* BSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSImageView.swift; sourceTree = "<group>"; };
+		6E8E6DF224796472002DAC75 /* BSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSButton.swift; sourceTree = "<group>"; };
 		6E9CA8D5247848F100DD4CE9 /* BSTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSTabBarController.swift; sourceTree = "<group>"; };
 		6E9CA8D92478496500DD4CE9 /* BooksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksVC.swift; sourceTree = "<group>"; };
 		6E9CA8DB2478497700DD4CE9 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
@@ -95,9 +97,18 @@
 			path = ImageViews;
 			sourceTree = "<group>";
 		};
+		6E8E6DF124796449002DAC75 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				6E8E6DF224796472002DAC75 /* BSButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		6E9CA8D42478487100DD4CE9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E8E6DF124796449002DAC75 /* Buttons */,
 				6E55E8C424793BDA005771E8 /* ImageViews */,
 				6E55E8BA24792F11005771E8 /* Cells */,
 				6E55E8B724792C3D005771E8 /* TabBarControllers */,
@@ -247,6 +258,7 @@
 				6E55E8C324793790005771E8 /* BSError.swift in Sources */,
 				6EC1FF662478443E008B0697 /* AppDelegate.swift in Sources */,
 				6E9CA8DA2478496500DD4CE9 /* BooksVC.swift in Sources */,
+				6E8E6DF324796472002DAC75 /* BSButton.swift in Sources */,
 				6EC1FF682478443E008B0697 /* SceneDelegate.swift in Sources */,
 				6E55E8BE247930FA005771E8 /* UIHelper.swift in Sources */,
 			);
