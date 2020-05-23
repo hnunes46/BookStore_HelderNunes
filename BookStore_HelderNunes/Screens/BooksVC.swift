@@ -67,6 +67,13 @@ class BooksVC: UIViewController {
 
 extension BooksVC: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let bookDetailVC = BookDetailVC()
+        bookDetailVC.book = booksDataSource[indexPath.row]
+        navigationController?.pushViewController(bookDetailVC, animated: true)
+    }
+    
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY         = scrollView.contentOffset.y
         let contentHeight   = scrollView.contentSize.height
