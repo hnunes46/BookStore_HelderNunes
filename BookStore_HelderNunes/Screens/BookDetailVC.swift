@@ -112,10 +112,9 @@ class BookDetailVC: UIViewController {
                     self.actionType = .add
                 }
             case .failure(let error):
-                let alert = UIAlertController(title: "Something went wrong", message: error.rawValue, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
                 DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Something went wrong", message: error.rawValue, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -191,22 +190,22 @@ class BookDetailVC: UIViewController {
                 
                 if self.actionType == .remove {
                     self.actionType = .add
-                    let alert = UIAlertController(title: "Removed from Favorites", message: "This book as successfully removed from favorites.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     
                     DispatchQueue.main.async {
                         self.favoriteButton.setTitle("Add Favorite", for: .normal)
+                        let alert = UIAlertController(title: "Removed from Favorites", message: "This book as successfully removed from favorites.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                     
                     return
                 } else {
                     self.actionType = .remove
-                    let alert = UIAlertController(title: "Added to Favorites", message: "This book as successfully added to favorites.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     
                     DispatchQueue.main.async {
                         self.favoriteButton.setTitle("Remove Favorite", for: .normal)
+                        let alert = UIAlertController(title: "Added to Favorites", message: "This book as successfully added to favorites.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                     
@@ -215,10 +214,9 @@ class BookDetailVC: UIViewController {
                 
             }
             
-            let alert = UIAlertController(title: "Something went wrong", message: error.rawValue, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
             DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Something went wrong", message: error.rawValue, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
             
