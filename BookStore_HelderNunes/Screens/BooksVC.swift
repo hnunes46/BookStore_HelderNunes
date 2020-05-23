@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BooksVC: UIViewController {
+class BooksVC: BSDataLoadingVC {
     var booksCollectionView: UICollectionView!
     var booksDataSource: [Book] = []
     
@@ -46,9 +46,11 @@ class BooksVC: UIViewController {
     
     
     func getBooks(page: Int) {
+        showLoadingView()
         
         NetworkManager.shared.getBooks(page: page) { [weak self] result in
             guard let self = self else { return }
+            self.dismissLoadingView()
             
             switch result {
             case .success(let books):
