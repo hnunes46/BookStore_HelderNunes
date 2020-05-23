@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct BookStoreResponse: Codable {
+    var kind: String
+    var totalItems: Int
+    var items: [Book]?
+}
+
 struct Book: Codable {
     var id: String
     var volumeInfo: VolumeInfo

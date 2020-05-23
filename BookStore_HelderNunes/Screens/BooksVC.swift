@@ -9,19 +9,91 @@
 import UIKit
 
 class BooksVC: UIViewController {
+    var booksCollectionView: UICollectionView!
+    var booksDataSource: [Book] = []
+    
+    var page = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .green
         
-        let repository = BookStoreRepository()
+        configureViewController()
+    }
+    
+    
+    private func configureViewController() {
+        view.backgroundColor = .systemBackground
         
-        repository.getBooks(page: 0, success: { (books) in
-            print(books)
-        }) { (error) in
-            print(error)
+        configureBooksCollectionView()
+        getBooks(page: page)
+    }
+    
+    
+    private func configureBooksCollectionView() {
+        booksCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createTwoColumnFlowLayout(in: view))
+        view.addSubview(booksCollectionView)
+        booksCollectionView.delegate = self
+        booksCollectionView.dataSource = self
+        booksCollectionView.backgroundColor = .systemBackground
+        booksCollectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.reuseId)
+    }
+    
+    
+    func getBooks(page: Int) {
+        
+        NetworkManager.shared.getBooks(page: page) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let books):
+                self.updateUI(with: books)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    func updateUI(with books: [Book]) {
+        booksDataSource.append(contentsOf: books)
+        
+        DispatchQueue.main.async {
+            self.booksCollectionView.reloadData()
         }
     }
 
+}
+
+
+extension BooksVC: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY         = scrollView.contentOffset.y
+        let contentHeight   = scrollView.contentSize.height
+        let height          = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            page += 1
+            getBooks(page: page)
+        }
+    }
+    
+}
+
+
+extension BooksVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return booksDataSource.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.reuseId, for: indexPath) as! BookCollectionViewCell
+        let book = booksDataSource[indexPath.row]
+        cell.set(book: book)
+        return cell
+    }
+    
+    
 }
